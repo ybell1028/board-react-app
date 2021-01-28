@@ -6,14 +6,17 @@ App.js 파일은 JSX라는 확장자 파일을 리턴하는데, JSX는 자바스
 className에서 N은 소문자가 아닌 대문자로 적어야 합니다. */
 
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import AppRouter from "./component/route/RouterComponent";
+import NavBar from "./component/route/NavBar";
 import customAxios from "./customAxios";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Container from "@material-ui/core/Container";
 function App() {
     return (
         <div>
-            <AppRouter />
+            <NavBar />
+            <Container>
+                <AppRouter />
+            </Container>
         </div>
     );
     function Home() {

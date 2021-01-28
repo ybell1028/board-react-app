@@ -1,7 +1,17 @@
 import React, { Component } from "react";
 import ApiService from "../../ApiService";
 
-class UserListComponent extends React.Component {
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
+
+class UserListComponent extends Component {
     constructor(props) {
         super(props);
 
@@ -69,43 +79,60 @@ class UserListComponent extends React.Component {
         */
         return (
             <div>
-                <h2>User List</h2>
-                <button onClick={this.addUser}> Add User </button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                            <th>UserName</th>
-                            <th>Age</th>
-                            <th>Salary</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Typography variant="h4" style={style}>
+                    User List
+                </Typography>
+                <Button variant="contained" color="primary" onClick={this.addUser}>
+                    Add User
+                </Button>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>ID</TableCell>
+                            <TableCell>FirstName</TableCell>
+                            <TableCell align="right">LastName</TableCell>
+                            <TableCell align="right">UserName</TableCell>
+                            <TableCell align="right">Age</TableCell>
+                            <TableCell align="right">Salary</TableCell>
+                            <TableCell align="right">Edit</TableCell>
+                            <TableCell align="right">Delete</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {this.state.users.map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.firstName}</td>
-                                <td>{user.lastName}</td>
-                                <td>{user.username}</td>
-                                <td>{user.age}</td>
-                                <td>{user.salary}</td>
-                                <td>
-                                    {/* "Edit" 버튼을 만들기 이전에 DB에서 유저리스트를 하나씩 출력하기 위해 "map"을 사용했습니다. 
+                            <TableRow key={user.id}>
+                                <TableCell cimponent="th" scope="user">
+                                    {user.id}
+                                </TableCell>
+                                <TableCell align="right">{user.firstName}</TableCell>
+                                <TableCell align="right">{user.lastName}</TableCell>
+                                <TableCell align="right">{user.username}</TableCell>
+                                <TableCell align="right">{user.age}</TableCell>
+                                <TableCell align="right">{user.salary}</TableCell>
+
+                                {/* "Edit" 버튼을 만들기 이전에 DB에서 유저리스트를 하나씩 출력하기 위해 "map"을 사용했습니다. 
                                     여기에서 id값을 editUser()의 파라미터로 넘기도록 작성했습니다. 
                                     예를 들어, DB에 저장된 username이 "피카츄"인 유저의 id가 1이라 한다면, 여기서 user.id는 1이 되겠죠.
                                     username이 "피카츄"인 유저정보를 수정하고자 해당 row에 있는 "Edit" 버튼을 누르면, 
                                     onClick()을 통해 파라미터값으로 1을 가지고 editUser()가 실행됩니다. */}
-                                    <button onClick={() => this.editUser(user.id)}>Edit</button>
-                                    <button onClick={() => this.deleteUser(user.id)}>Delete</button>
-                                </td>
-                            </tr>
+                                <TableCell align="right" onClick={() => this.editUser(user.id)}>
+                                    <CreateIcon />
+                                </TableCell>
+                                <TableCell align="right" onClick={() => this.deleteUser(user.id)}>
+                                    <DeleteIcon />
+                                </TableCell>
+                            </TableRow>
                         ))}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
             </div>
         );
     }
 }
+
+const style = {
+    display: "flex",
+    justifyContent: "center",
+};
 
 export default UserListComponent;
