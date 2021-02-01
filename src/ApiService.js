@@ -1,24 +1,24 @@
 import axios from "axios";
 
-const USER_API_BASE_URL = "http://localhost:8080/users";
+const USER_API_BASE_URL = "http://localhost:8080/posts";
 
 class ApiService {
-    fetchUsers() {
+    fetchPosts() {
         return axios.get(USER_API_BASE_URL);
     }
 
-    fetchUserByID(userID) {
-        return axios.get(USER_API_BASE_URL + "/" + userID);
+    fetchPostByID(postID) {
+        return axios.get(USER_API_BASE_URL + "/" + postID);
     }
 
-    deleteUser(userID) {
-        return axios.delete(USER_API_BASE_URL + "/" + userID);
+    deletePost(postID) {
+        return axios.delete(USER_API_BASE_URL + "/" + postID);
     }
-    addUser(user) {
-        return axios.post(USER_API_BASE_URL, user);
+    addPost(post) {
+        return axios.post(USER_API_BASE_URL, post);
     }
-    editUser(user) {
-        return axios.put(USER_API_BASE_URL + "/" + user.id, user);
+    editPost(post) {
+        return axios.put(USER_API_BASE_URL + "/" + post.id, post);
     }
 }
 

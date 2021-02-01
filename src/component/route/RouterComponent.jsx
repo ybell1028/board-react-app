@@ -7,9 +7,9 @@
 
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import UserListComponent from "../user/UserListComponent";
-import AddUserComponent from "../user/AddUserComponent";
-import EditUserComponent from "../user/EditUserComponent";
+import PostListComponent from "../user/PostListComponent";
+import AddPostComponent from "../user/AddPostComponent";
+import EditPostComponent from "../user/EditPostComponent";
 
 // 위에서 작성한 라우터 컴포넌트는 라우터만 관리해줄거라 함수 하나만 사용했습니다.
 // 그러니 컴포넌트를 함수형으로 작성하는게 효율적이겠죠?
@@ -19,10 +19,10 @@ const AppRouter = () => {
             <Router>
                 <div style={style}>
                     <Switch>
-                        <Route exact path="/" component={UserListComponent} />
-                        <Route path="/users" component={UserListComponent} />
-                        <Route path="/add-user" component={AddUserComponent} />
-                        <Route path="/edit-user" component={EditUserComponent} />
+                        <Route exact path="/" component={PostListComponent} />
+                        <Route path="/posts" component={PostListComponent} />
+                        <Route path="/add-post" component={AddPostComponent} />
+                        <Route path="/edit-post" component={EditPostComponent} />
                     </Switch>
                 </div>
             </Router>

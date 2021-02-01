@@ -19,40 +19,5 @@ function App() {
             </Container>
         </div>
     );
-    function Home() {
-        // IP 주소 변수 선언
-        const [ip, setIP] = useState("");
-
-        // IP 주소 값 설정
-        function callback(data) {
-            setIP(data);
-        }
-
-        // 펏번째 렌더링은 다 마친 후 실행
-        useEffect(() => {
-            // 클라이언트의 IP주소를 알아내는 백엔드의 함수를 호출합니다.
-            customAxios("/ip", callback);
-        }, []);
-
-        return <header className="App-header">이 기기의 IP주소는 {ip}입니다.</header>;
-    }
-
-    function About() {
-        return (
-            <div>
-                <hr />
-                <h2>소개 페이지</h2>
-            </div>
-        );
-    }
-
-    function Users() {
-        return (
-            <div>
-                <hr />
-                <h2>사용자 페이지</h2>
-            </div>
-        );
-    }
 }
 export default App;
