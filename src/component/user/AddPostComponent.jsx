@@ -2,32 +2,26 @@
 그리고 input태그에 이 정보들을 입력받게 하는데, 각 input태그마다 onChange()를 두어 실시간으로 
 setState를 통해 state값을 저장하게 합니다. 다 입력 후 "Save" 버튼을 누르면 API통신을 통해 
 DB에 저장하도록 할 겁니다. */
-
 import React, { Component } from "react";
 import ApiService from "../../ApiService";
-
-import TextField from "@material-ui/core/TextField";
-import { styled } from "@material-ui/core/styles";
-import { spacing } from "@material-ui/system";
-import MyButton from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Tab from "../post/TabComponent";
+import Title from "../post/TitleComponent";
 import Content from "../post/ContentComponent";
-
-const Button = styled(MyButton)(spacing);
+import Button from "../post/ButtonComponent";
 
 class AddPostComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            id: "",
+            // id: "",
             tab: "",
             title: "",
             content: "",
-            writer: "",
-            date: "",
-            rcm: "", // 추천
+            // writer: "",
+            // date: "",
+            // rcm: "", // 추천
         };
     }
 
@@ -41,13 +35,13 @@ class AddPostComponent extends Component {
         e.preventDefault();
 
         let post = {
-            id: this.state.id,
+            // id: this.state.id, // 서버로부터 필요
             tab: this.state.tab,
             title: this.state.title,
             content: this.state.content,
-            writer: this.state.writer,
-            date: this.state.date,
-            rcm: this.state.rcm,
+            // writer: this.state.writer, // 서버로부터 필요
+            // date: this.state.date, // 서버로부터 필요
+            // rcm: this.state.rcm, // 서버로부터 필요
         };
 
         ApiService.addPost(post)
@@ -75,25 +69,9 @@ class AddPostComponent extends Component {
                 </Typography>
                 <form style={formContainer}>
                     <Tab />
-
-                    <TextField
-                        type="text"
-                        placeholder="제목"
-                        name="title"
-                        fullWidth
-                        margin="normal"
-                        value={this.state.title}
-                        onChange={this.onChange}
-                    />
-
+                    <Title onChange={this.onChange} />
                     <Content />
-
-                    <Button variant="contained" mr={2} color="default" onClick={this.cancelPost}>
-                        취소
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={this.savePost}>
-                        등록
-                    </Button>
+                    <Button savePost={this.savePost} cancelPost={this.cancelPost} />
                 </form>
             </div>
         );

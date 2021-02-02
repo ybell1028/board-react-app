@@ -7,6 +7,7 @@
 
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SignupComponent from "../signup/Signup";
 import PostListComponent from "../user/PostListComponent";
 import AddPostComponent from "../user/AddPostComponent";
 import EditPostComponent from "../user/EditPostComponent";
@@ -23,6 +24,7 @@ const AppRouter = () => {
                         <Route path="/posts" component={PostListComponent} />
                         <Route path="/add-post" component={AddPostComponent} />
                         <Route path="/edit-post" component={EditPostComponent} />
+                        <Route path="/signup" component={SignupComponent} />
                     </Switch>
                 </div>
             </Router>

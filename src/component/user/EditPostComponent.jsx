@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Tab from "../post/TabComponent";
 
-class EditPostComponent extends React.Component {
+class EditPostComponent extends Component {
     constructor(props) {
         super(props);
 
